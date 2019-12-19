@@ -16,13 +16,19 @@ public class RSocketSecurityConfiguration {
 
     @Bean
     public MapReactiveUserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
+        UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("password")
                 .roles("ADMIN")
                 .build();
 
-        return new MapReactiveUserDetailsService(user);
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("password")
+                .roles("USER")
+                .build();
+
+        return new MapReactiveUserDetailsService(admin, user);
     }
 
     @Bean
