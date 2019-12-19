@@ -6,6 +6,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.rsocket.EnableRSocketSecurity;
 import org.springframework.security.config.annotation.rsocket.RSocketSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.rsocket.core.PayloadSocketAcceptorInterceptor;
@@ -15,7 +16,7 @@ import org.springframework.security.rsocket.core.PayloadSocketAcceptorIntercepto
 public class RSocketSecurityConfiguration {
 
     @Bean
-    public MapReactiveUserDetailsService userDetailsService() {
+    public ReactiveUserDetailsService userDetailsService() {
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("password")
