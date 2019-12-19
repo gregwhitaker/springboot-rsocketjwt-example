@@ -40,7 +40,7 @@ public class RSocketSecurityConfiguration {
                         .anyRequest().authenticated()
                         .anyExchange().permitAll()
         )
-                .basicAuthentication(Customizer.withDefaults());
+                .jwt(Customizer.withDefaults());
 
         return rsocket.build();
     }
