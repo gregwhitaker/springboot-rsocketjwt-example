@@ -1,4 +1,5 @@
 # springboot-rsocketjwt-example
+An example of using JWT with [RSocket](http://rsocket.io) and Spring Boot.
 
 ## Building the Example
 Run the following command to build the example:
@@ -8,7 +9,7 @@ Run the following command to build the example:
 ## Running the Example
 Follow the steps below to run the example:
 
-TBD
+1. TBD
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-rsocketjwt-example/issues).
