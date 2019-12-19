@@ -36,7 +36,9 @@ public class RSocketSecurityConfiguration {
     public PayloadSocketAcceptorInterceptor rsocketInterceptor(RSocketSecurity rsocket) {
         rsocket.authorizePayload(authorize ->
                 authorize
-                        .route("hello").permitAll()     // Permit access to the "hello" route by unauthenticated users
+                        .route("hello").permitAll()         // Permit access to the "hello" route by unauthenticated users
+                        .route("hello.secure.adminonly")
+                            .hasRole("ADMIN")
                         .anyRequest().authenticated()
                         .anyExchange().permitAll()
         )
