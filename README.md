@@ -1,5 +1,18 @@
 # springboot-rsocketjwt-example
 
+## Building the Example
+Run the following command to build the example:
+
+    ./gradlew clean build
+    
+## Running the Example
+Follow the steps below to run the example:
+
+TBD
+
+## Bugs and Feedback
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-rsocketjwt-example/issues).
+
 ## License
 MIT License
 
