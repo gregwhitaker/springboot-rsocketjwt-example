@@ -54,6 +54,6 @@ public class RSocketSecurityConfiguration {
 
     @Bean
     public ReactiveJwtDecoder jwtDecoder() {
-        return ReactiveJwtDecoders.fromIssuerLocation("https://example.com/auth/realms/demo");
+        return ReactiveJwtDecoders.fromIssuerLocation("http://localhost:9999/auth/realms/demo");
     }
 }
