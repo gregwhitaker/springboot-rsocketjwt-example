@@ -1,5 +1,5 @@
 # springboot-rsocketjwt-example
-An example of using JWT with [RSocket](http://rsocket.io) and Spring Boot.
+An example of using [JWT](https://jwt.io/), for authentication and authorization, with [RSocket](http://rsocket.io) and Spring Boot.
 
 ## Building the Example
 Run the following command to build the example:
@@ -9,7 +9,21 @@ Run the following command to build the example:
 ## Running the Example
 Follow the steps below to run the example:
 
-1. TBD
+1. Run the following command to generate the admin and user JWT tokens to use for authenticating with the `hello-service`:
+
+        ./gradlew :token-generator:run
+        
+    If successful, you will see the tokens displayed in the console:
+
+        > Task :token-generator:run
+        
+        Generated Tokens
+        ================
+        Admin:
+        eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6ImhlbGxvLXNlcnZpY2UiLCJzY29wZSI6IkFETUlOIiwiaXNzIjoiaGVsbG8tc2VydmljZS1kZW1vIiwiZXhwIjoxNTc2ODY4MjE0LCJqdGkiOiIyYjgwOTUwMC0wZWJlLTQ4MDEtOTYwZS1mZjc2MGQ3MjE0ZGUifQ.fzWzcvelcaXooMa5C3w7BI4lJxcruZiA7TwFyPQuH1k
+        
+        User:
+        eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXVkIjoiaGVsbG8tc2VydmljZSIsInNjb3BlIjoiVVNFUiIsImlzcyI6ImhlbGxvLXNlcnZpY2UtZGVtbyIsImV4cCI6MTU3Njg2ODIxNCwianRpIjoiOGQzZDE2YWUtZTg5MS00Nzc4LWFjNWEtN2NhY2ExOGEwMTYwIn0.Tlg1WxTcrMliLOBmBRSPR33C3xfbc6KUEkEZit928tE
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-rsocketjwt-example/issues).
