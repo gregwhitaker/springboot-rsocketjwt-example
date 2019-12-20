@@ -1,10 +1,7 @@
-import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
-
 plugins {
     id "java"
     id "org.springframework.boot"
     id "io.spring.dependency-management"
-    id "com.bmuschko.docker-remote-api"
 }
 
 sourceCompatibility = 1.8
@@ -17,11 +14,4 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-messaging'
     implementation 'org.springframework.security:spring-security-rsocket'
-}
-
-task buildImage(type: DockerBuildImage, dependsOn: build) {
-    buildArgs = ['JAR_FILE': "${bootJar.getArchiveFileName().get()}"]
-    dockerFile = file("${projectDir}/Dockerfile")
-    inputDir = file("${projectDir}")
-    tags = ["gregnetifi/${projectDir.name}", "gregnetifi/${projectDir.name}:${version}"]
 }
