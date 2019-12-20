@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.rsocket.RSocketRequester;
-import org.springframework.security.rsocket.metadata.BasicAuthenticationEncoder;
 import org.springframework.util.MimeTypeUtils;
 
 @Configuration
