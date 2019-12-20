@@ -13,3 +13,5 @@ gradleEnterprise {
 rootProject.name = 'springboot-rsocketjwt-example'
 include 'hello-service'
 include 'hello-client'
+include 'token-generator'
+
