@@ -1,7 +1,9 @@
 plugins {
-    id 'java'
+    id "java"
+    id "application"
 }
 
+mainClassName = 'example.token.BearerTokenGenerator'
 sourceCompatibility = 1.8
 
 dependencies {
