@@ -29,7 +29,31 @@ Follow the steps below to run the example:
         
         User:
         eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXVkIjoiaGVsbG8tc2VydmljZSIsInNjb3BlIjoiVVNFUiIsImlzcyI6ImhlbGxvLXNlcnZpY2UtZGVtbyIsImV4cCI6MTU3Njg2ODIxNCwianRpIjoiOGQzZDE2YWUtZTg5MS00Nzc4LWFjNWEtN2NhY2ExOGEwMTYwIn0.Tlg1WxTcrMliLOBmBRSPR33C3xfbc6KUEkEZit928tE
+        
+2. In a new terminal, run the following command to start the `hello-service`:
 
+        ./gradlew :hello-service:bootRun
+        
+    If successful, you will see a message stating the service has been started in the console:
+    
+        2019-12-20 10:33:59.223  INFO 1889 --- [           main] e.service.hello.HelloServiceApplication  : Started HelloServiceApplication in 1.185 seconds (JVM running for 1.546)
+        
+    Now you are ready to start calling the `hello-service`.
+    
+3. In a new terminal, run the following command to call the unsecured `hello` endpoint:
+
+        ./gradlew :hello-client:bootRun --args="hello Bob"
+        
+   Notice that the request was successful and you received a hello response:
+   
+        2019-12-20 10:37:24.282  INFO 1919 --- [           main] e.client.hello.HelloClientApplication    : Response: Hello, Bob! - from unsecured method 
+        
+4. Next, run the following command to call the `hello.secure` method which requires that the user is authenticated:
+
+        ./gradlew :hello-client:bootRun --args="hello.secure Bob"
+        
+    You will receive an `io.rsocket.exceptions.ApplicationErrorException: Access Denied` exception because you have not supplied a valid JWT token.
+ 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-rsocketjwt-example/issues).
 
