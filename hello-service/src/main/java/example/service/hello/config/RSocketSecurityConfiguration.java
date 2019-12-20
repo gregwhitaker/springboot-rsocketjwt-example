@@ -9,8 +9,6 @@ import org.springframework.security.core.userdetails.MapReactiveUserDetailsServi
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
-import org.springframework.security.oauth2.jwt.ReactiveJwtDecoders;
 import org.springframework.security.rsocket.core.PayloadSocketAcceptorInterceptor;
 
 @Configuration
@@ -50,10 +48,5 @@ public class RSocketSecurityConfiguration {
                 .jwt(Customizer.withDefaults());
 
         return rsocket.build();
-    }
-
-    @Bean
-    public ReactiveJwtDecoder jwtDecoder() {
-        return ReactiveJwtDecoders.fromIssuerLocation("http://localhost:9999/auth/realms/demo");
     }
 }
