@@ -14,7 +14,7 @@ import java.util.UUID;
 public class BearerTokenGenerator {
 
     public static void main(String... args) throws Exception {
-        Algorithm algorithm = Algorithm.HMAC256("demosecret");
+        Algorithm algorithm = Algorithm.HMAC256("JAC1O17W1F3QB9E8B4B1MT6QKYOQB36V");
 
         String adminToken = JWT.create()
                 .withJWTId(UUID.randomUUID().toString())
@@ -22,6 +22,7 @@ public class BearerTokenGenerator {
                 .withSubject("admin")
                 .withExpiresAt(Date.from(Instant.now().plus(30, ChronoUnit.MINUTES)))
                 .withAudience("hello-service")
+                .withClaim("scope", "ADMIN")
                 .sign(algorithm);
 
         String userToken = JWT.create()
@@ -30,6 +31,7 @@ public class BearerTokenGenerator {
                 .withSubject("user")
                 .withExpiresAt(Date.from(Instant.now().plus(30, ChronoUnit.MINUTES)))
                 .withAudience("hello-service")
+                .withClaim("scope", "USER")
                 .sign(algorithm);
 
         System.out.println();
