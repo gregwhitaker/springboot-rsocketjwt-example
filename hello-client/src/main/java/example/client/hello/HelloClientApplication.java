@@ -2,9 +2,12 @@ package example.client.hello;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
 
 import static picocli.CommandLine.Option;
@@ -22,6 +25,14 @@ public class HelloClientApplication {
     @Component
     public class Runner implements CommandLineRunner {
 
+        @Qualifier("insecureRSocketRequester")
+        @Autowired
+        private RSocketRequester insecureRSocketRequester;
+
+        @Qualifier("secureRSocketRequester")
+        @Autowired
+        private RSocketRequester secureRSocketRequester;
+        
         @Override
         public void run(String... args) throws Exception {
             ClientArguments params = populateCommand(new ClientArguments(), args);
