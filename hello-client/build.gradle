@@ -14,8 +14,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-messaging'
     implementation 'org.springframework.security:spring-security-rsocket'
-    implementation 'org.keycloak:keycloak-admin-client:3.4.3.Final'
-    implementation 'org.jboss.resteasy:resteasy-client:3.1.4.Final'
 }
 
 task buildImage(type: DockerBuildImage, dependsOn: build) {

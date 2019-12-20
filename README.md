@@ -1,11 +1,6 @@
 # springboot-rsocketjwt-example
 An example of using JWT with [RSocket](http://rsocket.io) and Spring Boot.
 
-## Prerequisites
-This example requires a running instance of Keycloak to issue and validate tokens.
-
-Run the following commands to start a local Keycloak instance:
-
 ## Building the Example
 Run the following command to build the example:
 
