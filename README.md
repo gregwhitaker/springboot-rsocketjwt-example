@@ -3,6 +3,9 @@ An example of using [JWT](https://jwt.io/), for authentication and authorization
 
 This example consists of an RSocket service, `hello-service`, that returns hello messages based upon the method called and the supplied JWT token from the `hello-client` application.
 
+The example assumes that you have already retrieved valid JWT tokens from your choice of Authorization Server. To mimic this, a `token-generator`
+project has been included to get valid tokens for use with this demo.
+
 ## Building the Example
 Run the following command to build the example:
 
