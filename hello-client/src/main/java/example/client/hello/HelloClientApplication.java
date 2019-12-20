@@ -22,6 +22,9 @@ public class HelloClientApplication {
         SpringApplication.run(HelloClientApplication.class, args);
     }
 
+    /**
+     * Runs the application.
+     */
     @Component
     public class Runner implements CommandLineRunner {
 
@@ -32,7 +35,7 @@ public class HelloClientApplication {
         @Qualifier("secureRSocketRequester")
         @Autowired
         private RSocketRequester secureRSocketRequester;
-        
+
         @Override
         public void run(String... args) throws Exception {
             ClientArguments params = populateCommand(new ClientArguments(), args);
@@ -49,7 +52,7 @@ public class HelloClientApplication {
     public static class ClientArguments {
 
         /**
-         * Basic auth username
+         * JWT token for authentication and authorization
          */
         @Option(names = "--token", description = "jwt token")
         public String token;
