@@ -54,6 +54,28 @@ Follow the steps below to run the example:
         
     You will receive an `io.rsocket.exceptions.ApplicationErrorException: Access Denied` exception because you have not supplied a valid JWT token.
  
+5. Now, run the same command again, but this time supply the `User` JWT token you generated earlier:
+
+     ./gradlew :hello-client:bootRun --args="--token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXVkIjoiaGVsbG8tc2VydmljZSIsInNjb3BlIjoiVVNFUiIsImlzcyI6ImhlbGxvLXNlcnZpY2UtZGVtbyIsImV4cCI6MTU3Njg2ODIxNCwianRpIjoiOGQzZDE2YWUtZTg5MS00Nzc4LWFjNWEtN2NhY2ExOGEwMTYwIn0.Tlg1WxTcrMliLOBmBRSPR33C3xfbc6KUEkEZit928tE hello.secure Bob"
+
+    You will now receive a successful hello message because you have authenticated with a valid JWT token:
+    
+        2019-12-20 10:42:14.371  INFO 1979 --- [           main] e.client.hello.HelloClientApplication    : Response: Hello, Bob! - from secured method
+        
+6. Next, let's test authorization by calling the `hello.secure.adminonly` endpoint with the `User` token by running the following command:
+
+        ./gradlew :hello-client:bootRun --args="--token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiYXVkIjoiaGVsbG8tc2VydmljZSIsInNjb3BlIjoiVVNFUiIsImlzcyI6ImhlbGxvLXNlcnZpY2UtZGVtbyIsImV4cCI6MTU3Njg2ODIxNCwianRpIjoiOGQzZDE2YWUtZTg5MS00Nzc4LWFjNWEtN2NhY2ExOGEwMTYwIn0.Tlg1WxTcrMliLOBmBRSPR33C3xfbc6KUEkEZit928tE hello.secure.adminonly Bob"
+
+    You will receive an `io.rsocket.exceptions.ApplicationErrorException: Access Denied` exception because while you are authenticated, you are not authorized to access the method.
+    
+7. Finally, let's call the `hello.secure.adminonly` endpoint again, but this time use the `Admin` token by running the following command:
+
+        ./gradlew :hello-client:bootRun --args="--token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6ImhlbGxvLXNlcnZpY2UiLCJzY29wZSI6IkFETUlOIiwiaXNzIjoiaGVsbG8tc2VydmljZS1kZW1vIiwiZXhwIjoxNTc2ODY4MjE0LCJqdGkiOiIyYjgwOTUwMC0wZWJlLTQ4MDEtOTYwZS1mZjc2MGQ3MjE0ZGUifQ.fzWzcvelcaXooMa5C3w7BI4lJxcruZiA7TwFyPQuH1k hello.secure.adminonly Bob"
+        
+    You will receive a successful hello message because you have supplied a valid JWT token with admin scope:
+    
+        2019-12-20 10:47:56.047  INFO 2054 --- [           main] e.client.hello.HelloClientApplication    : Response: Hello, Bob! - from secured method [admin only]
+
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-rsocketjwt-example/issues).
 
