@@ -16,20 +16,9 @@ public class RSocketConfiguration {
     @Value("${example.service.hello.port}")
     private int helloServicePort;
 
-    @Bean("insecureRSocketRequester")
-    public RSocketRequester insecureRSocketRequester() {
+    @Bean
+    public RSocketRequester rsocketRequester() {
         return RSocketRequester.builder()
-                .dataMimeType(MimeTypeUtils.TEXT_PLAIN)
-                .connectTcp(helloServiceHostname, helloServicePort)
-                .block();
-    }
-
-    @Bean(name = "secureRSocketRequester")
-    public RSocketRequester helloServiceRequester() {
-        return RSocketRequester.builder()
-                .rsocketStrategies(builder -> {
-                    builder.encoder(new BasicAuthenticationEncoder());
-                })
                 .dataMimeType(MimeTypeUtils.TEXT_PLAIN)
                 .connectTcp(helloServiceHostname, helloServicePort)
                 .block();

@@ -28,13 +28,8 @@ public class HelloClientApplication {
     @Component
     public class Runner implements CommandLineRunner {
 
-        @Qualifier("insecureRSocketRequester")
         @Autowired
-        private RSocketRequester insecureRSocketRequester;
-
-        @Qualifier("secureRSocketRequester")
-        @Autowired
-        private RSocketRequester secureRSocketRequester;
+        private RSocketRequester rSocketRequester;
 
         @Override
         public void run(String... args) throws Exception {
