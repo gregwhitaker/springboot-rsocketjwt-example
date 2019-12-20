@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.MapReactiveUserDetailsServi
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
+import org.springframework.security.oauth2.jwt.ReactiveJwtDecoders;
 import org.springframework.security.rsocket.core.PayloadSocketAcceptorInterceptor;
 
 @Configuration
@@ -36,14 +38,22 @@ public class RSocketSecurityConfiguration {
     public PayloadSocketAcceptorInterceptor rsocketInterceptor(RSocketSecurity rsocket) {
         rsocket.authorizePayload(authorize ->
                 authorize
-                        .route("hello").permitAll()         // Permit access to the "hello" route by unauthenticated users
+                        .route("hello")
+                            .permitAll()         // Permit access to the "hello" route by unauthenticated users
                         .route("hello.secure.adminonly")
                             .hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                        .anyExchange().permitAll()
+                        .anyRequest()
+                            .authenticated()
+                        .anyExchange()
+                            .permitAll()
         )
                 .jwt(Customizer.withDefaults());
 
         return rsocket.build();
+    }
+
+    @Bean
+    public ReactiveJwtDecoder jwtDecoder() {
+        return ReactiveJwtDecoders.fromIssuerLocation("https://example.com/auth/realms/demo");
     }
 }
