@@ -1,4 +1,6 @@
 # springboot-rsocketjwt-example
+![Build](https://github.com/gregwhitaker/springboot-rsocketjwt-example/workflows/Build/badge.svg)
+
 An example of using [JWT](https://jwt.io/), for authentication and authorization, with [RSocket](http://rsocket.io) and Spring Boot.
 
 This example consists of an RSocket service, `hello-service`, that returns hello messages based upon the method called and the supplied JWT token from the `hello-client` application.
